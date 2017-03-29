@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resume Emailer</title>
+</head>
+
+<body>
+
+    <h2>Enter the persons's email you want to send your resume to:</h2>
+    <input type="text" name="" id="email-address">
+    <button type="button" name="button" id="submit">Send</button>
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <script>
+        $("#submit").click(function() {
+            $.ajax({
+                method: 'POST',
+                url: '/send-resume',
+                success: function(res) {
+                    console.log(res);
+                },
+                data: {
+                    destination_email: $("#email-address").val()
+                }
+            });
+        })
+    </script>
+
+</body>
+
+</html>
